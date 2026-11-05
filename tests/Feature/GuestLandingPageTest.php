@@ -19,4 +19,16 @@ class GuestLandingPageTest extends TestCase
             ->assertSee('12:00 noon')
             ->assertSee('planning examples only');
     }
+
+    public function test_landing_page_uses_https_assets_when_request_is_forwarded_over_https(): void
+    {
+        $response = $this->withHeader('X-Forwarded-Proto', 'https')
+            ->get('/');
+
+        $response->assertOk();
+
+        preg_match('/<link rel="stylesheet" href="([^"]*landing\.css)"/', $response->getContent(), $matches);
+
+        $this->assertSame('https://localhost:8000/css/landing.css', $matches[1] ?? null);
+    }
 }
