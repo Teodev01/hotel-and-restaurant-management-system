@@ -25,7 +25,9 @@
                         Explore room inspiration, example nightly rates, and a sample menu before planning your visit.
                     </p>
                     <div class="guest-intro-actions">
-                        <a class="site-button site-button-primary" href="{{ url('/register') }}">Create a guest account <span aria-hidden="true">↗</span></a>
+                        @guest
+                            <a class="site-button site-button-primary" href="{{ url('/register') }}">Create a guest account <span aria-hidden="true">↗</span></a>
+                        @endguest
                         <a class="guest-text-link" href="#rooms">Explore the bed guide</a>
                         <a class="guest-text-link" href="#menu">Browse the menu</a>
                     </div>

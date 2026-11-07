@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Tests\TestCase;
 
 class GuestLandingPageTest extends TestCase
@@ -11,6 +12,7 @@ class GuestLandingPageTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk()
+            ->assertSee('Create a guest account <span aria-hidden="true">↗</span>', false)
             ->assertSee('House steak frites')
             ->assertSee('Chocolate lava cake')
             ->assertSee('₱1,450')
@@ -18,6 +20,16 @@ class GuestLandingPageTest extends TestCase
             ->assertSee('2:00 PM')
             ->assertSee('12:00 noon')
             ->assertSee('planning examples only');
+    }
+
+    public function test_landing_page_hides_guest_account_cta_for_authenticated_guests(): void
+    {
+        $user = User::factory()->make(['role' => 'guest']);
+
+        $response = $this->actingAs($user)->get('/');
+
+        $response->assertOk()
+            ->assertDontSee('Create a guest account <span aria-hidden="true">↗</span>', false);
     }
 
     public function test_landing_page_uses_https_assets_when_request_is_forwarded_over_https(): void
