@@ -54,7 +54,6 @@
             <section id="rooms" class="room-guide" aria-labelledby="room-guide-title">
                 <div class="room-guide-heading">
                     <h2 id="room-guide-title">Room inspiration &amp; bed sizes</h2>
-                    <p>Photos are examples from Pexels, not images of this property. Sizes below are common U.S. mattress references.</p>
                 </div>
 
                 <div class="room-catalogue">
@@ -178,7 +177,6 @@
             <section id="menu" class="menu-guide" aria-labelledby="menu-title">
                 <div class="menu-guide-heading">
                     <h2 id="menu-title">A sample menu for lingering.</h2>
-                    <p>Illustrative dishes and prices in PHP. Photos show food inspiration, not confirmed restaurant plates.</p>
                 </div>
 
                 <div class="menu-sections">
